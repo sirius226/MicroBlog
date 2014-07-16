@@ -3,6 +3,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app, db, lm, oid
 from forms import LoginForm
 from models import User, ROLE_USER, ROLE_ADMIN
+from datetime import datetime
 
 @lm.user_loader
 def load_user(id):
