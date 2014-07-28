@@ -4,6 +4,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from config import basedir
+from flask.ext.mail import Mail
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -12,8 +13,7 @@ lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
-
-from app import views, models
+mail = Mail(app)
 
 if not app.debug:
     import logging
@@ -24,3 +24,5 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
+
+from app import views, models

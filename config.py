@@ -19,3 +19,14 @@ POSTS_PER_PAGE = 3
 
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
+
+# email server
+MAIL_SERVER = 'smtp.googlemail.com'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'microblogserver'
+MAIL_PASSWORD = 'lc5115800'
+
+# administrator list
+ADMINS = ['microblogserver@gmail.com']
