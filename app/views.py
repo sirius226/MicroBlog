@@ -8,10 +8,16 @@ from config import POSTS_PER_PAGE
 from forms import SearchForm
 from config import MAX_SEARCH_RESULTS
 from emails import follower_notification
+from app import babel
+from config import LANGUAGES
 
 @lm.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())
 
 @app.before_request
 def before_request():

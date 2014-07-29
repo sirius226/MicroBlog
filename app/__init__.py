@@ -5,6 +5,9 @@ from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from config import basedir
 from flask.ext.mail import Mail
+from momentjs import momentjs
+from flask.ext.babel import Babel
+
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -14,6 +17,7 @@ lm.init_app(app)
 lm.login_view = 'login'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 mail = Mail(app)
+babel = Babel(app)
 
 if not app.debug:
     import logging
@@ -24,5 +28,7 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
+
+app.jinja_env.globals['momentjs'] = momentjs
 
 from app import views, models

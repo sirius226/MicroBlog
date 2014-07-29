@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
+
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
-
 CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
 OPENID_PROVIDERS = [
     { 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
@@ -16,8 +19,6 @@ OPENID_PROVIDERS = [
 
 # pagination
 POSTS_PER_PAGE = 3
-
-WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
 
 # email server
@@ -30,3 +31,9 @@ MAIL_PASSWORD = 'lc5115800'
 
 # administrator list
 ADMINS = ['microblogserver@gmail.com']
+
+# available languages
+LANGUAGES = {
+    'en': 'English',
+    'es': 'Español'
+}
